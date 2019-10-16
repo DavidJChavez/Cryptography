@@ -17,23 +17,32 @@ def getKM(n, a=2):
     return (int(k), int(m))
 
 
-def miller(a, n, _iter):
+def miller(aArray, n):
     k, m = getKM(n)
-    b = (a**m)%n
-    isPrime = bool
-    if isCongruent(b, 1, n):
-        isPrime = True
-    else:
-        for x in range(0, _iter):
-            if isCongruent(b, -1, n):
-                isPrime = True
+    for a in aArray:
+        b = pow(a,m,n)
+        if isCongruent(b, 1, n) or isCongruent(b, -1, n):
+            print("With a = " + str(a) + ", n is probably Prime")
+        else:
+            for _ in range(k):
+                b = pow(b, 2, n)
+                if isCongruent(b, -1, n):
+                    print("With a = " + str(a) + ", n is probably Prime")
+                    break
+                elif isCongruent(b, 1, n):
+                    print("With a = " + str(a) + ", n is probably Composite")
+                    break
+                elif _ == k-1:
+                    print("N is probably Composite")
+                    break
+
+                
             
 
 if __name__ == "__main__":
-    a = int(input("Value a: "))
+    a = []
     n = int(input("Value n: "))
     _iter = int(input("Iterations: "))
-    if miller(a, n, _iter):
-        print("Prime")
-    else:
-        print("Composit")
+    for x in range(_iter):
+        a.append(int(input("Value a "+ str(x+1) + ": ")))
+    miller(a, n)
