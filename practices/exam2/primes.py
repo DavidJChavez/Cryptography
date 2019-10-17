@@ -23,12 +23,12 @@ def question1(p, q):
     n = 2
     i = 0
     primeS = n*p*q+1
-    print("\nP* = ({0})({1})({2}) + 1 = {3}".format(2, p, q, primeS))
+    print("\nP* = ({0})({1})({2}) + 1 = {3}".format(n, p, q, primeS))
     while not isprime(n*p*q + 1):
         i += 1
         n = (i+1)*2
         P = n*p*q+1
-        print("P* = ({0})({1})({2}) + 1 = {3}".format(2, p, q, primeS))
+        print("P* = ({0})({1})({2}) + 1 = {3}".format(n, p, q, primeS))
     return n, primeS
 
 def question2(alpha, p, q, n, mod):

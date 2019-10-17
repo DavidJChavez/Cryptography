@@ -22,7 +22,7 @@ def miller(aArray, n):
     k, m = getKM(n)
     for a in aArray:
         b = pow(a,m,n)
-        if isCongruent(b, 1, n) or isCongruent(b, -1, n):
+        if isCongruent(b, 1, n):
             print("With a = " + str(a) + ", n is probably Prime")
         else:
             for _ in range(k):
