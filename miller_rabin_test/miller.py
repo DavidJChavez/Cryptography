@@ -1,4 +1,5 @@
 # Miller Rabin Test
+import random
 
 def isCongruent(a, b, m):
     if a == b or ( abs(a - b) % m ) == 0:
@@ -44,5 +45,9 @@ if __name__ == "__main__":
     n = int(input("Value n: "))
     _iter = int(input("Iterations: "))
     for x in range(_iter):
-        a.append(int(input("Value a "+ str(x+1) + ": ")))
+        value = input("Value a "+ str(x+1) + " (r: rand): ")
+        if value == 'r':
+            a.append(int(random.randrange(2, n - 1)))
+        else:
+            a.append(int(value))
     miller(a, n)
